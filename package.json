@@ -9,7 +9,7 @@
   "license": "ISC",
   "dependencies": {
     "chromedriver": "^74.0.0",
-    "webdriverio": "^5.8.4"
+    "webdriverio": "^4.13.1"
   },
   "devDependencies": {
     "@wdio/cli": "^5.8.4",
@@ -17,6 +17,7 @@
     "@wdio/mocha-framework": "^5.8.1",
     "@wdio/spec-reporter": "^5.8.0",
     "@wdio/sync": "^5.8.1",
+    "chai": "^4.2.0",
     "wdio-chromedriver-service": "^5.0.1",
     "wdio-mocha-framework": "^0.6.4",
     "wdio-selenium-standalone-service": "0.0.12",
