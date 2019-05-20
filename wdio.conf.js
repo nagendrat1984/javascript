@@ -130,8 +130,8 @@ exports.config = {
 
     visualRegression: {
         compare: new VisualRegressionCompare.LocalCompare({
-          referenceName: getScreenshotName(path.join(process.cwd(), 'screenshots/reference')),
-          screenshotName: getScreenshotName(path.join(process.cwd(), 'screenshots/screen')),
+          referenceName: getScreenshotName(path.join(process.cwd(), 'screenshots/baseline')),
+          screenshotName: getScreenshotName(path.join(process.cwd(), 'screenshots/actual')),
           diffName: getScreenshotName(path.join(process.cwd(), 'screenshots/diff')),
           misMatchTolerance: 0.01,
         }),
@@ -162,6 +162,8 @@ exports.config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
+        compilers: ['js:@babel/register'],
+        //require: ['./test/helpers/common.js'],
         timeout: 60000
     },
     //
@@ -194,8 +196,9 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: function (capabilities, specs) {
+      require('@babel/register');
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
