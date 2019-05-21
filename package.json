@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "wdio wdio.conf.js",
-    "logintest": "wdio wdio.conf.js --spec login.js"
+    "test": "wdio wdio.conf.js --suite Login",
+    "suitelogin": "wdio wdio.conf.js --suite Login"
   },
   "author": "", 
   "license": "ISC",

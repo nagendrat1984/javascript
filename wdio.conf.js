@@ -44,6 +44,12 @@ exports.config = {
     exclude: [
         // 'path/to/excluded/files'
     ],
+
+    suites: {
+      Login :[
+        './test/login.js'
+      ],
+    },
     //
     // ============
     // Capabilities
@@ -104,7 +110,7 @@ exports.config = {
     //
     // If you only want to run your tests until a specific amount of tests have failed use
     // bail (default is 0 - don't bail, run all tests).
-    bail: 0,
+    bail: 10,
     //
     // Set a base URL in order to shorten url command calls. If your `url` parameter starts
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
@@ -114,6 +120,8 @@ exports.config = {
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 5000,
+
+    waitforInterval: 1000,
     //
     // Default timeout in milliseconds for request
     // if Selenium Grid doesn't send response
@@ -188,8 +196,13 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // beforeSession: function (config, capabilities, specs) {
-    // },
+    beforeSession: function (config, capabilities, specs) {
+      let chai = require('chai');
+
+      global.expect = chai.expect;
+      global.assert = chai.assert;
+      
+    },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
      * variables like `browser`. It is the perfect place to define custom commands.
@@ -198,6 +211,7 @@ exports.config = {
      */
     before: function (capabilities, specs) {
       require('@babel/register');
+
     },
     /**
      * Runs before a WebdriverIO command gets executed.
