@@ -14,44 +14,50 @@ describe('webdriver.io page', () => {
         browser.url('/');
     });
    
-    // it('verify the title of the xplan page', () => {
+    it('verify the title of the xplan page', () => {
         
-    //     const title = browser.getTitle();
-    //     assert.equal(title, 'XPLAN Today | AMP XPLAN');
-    //     //browser.pause(30000);
-    //     // const userid = $('#userid');
-    //     // userid.setValue('ntanguturi');
-    //     // let report = browser.checkElement('.content');
-    //     // console.log(report);
-    //     // compare(report);
-    // });
+        const title = browser.getTitle();
+        assert.equal(title, 'XPLAN Today | AMP XPLAN');
+        //browser.pause(30000);
+        // const userid = $('#userid');
+        // userid.setValue('ntanguturi');
+        // let report = browser.checkElement('.content');
+        // console.log(report);
+        // compare(report);
+    });
 
-    it('verify login', () => {
+    it('Enter login details', () => {
         const userid = $('#userid');
-        userid.setValue('abc123');
+        //userid.setValue('ipulikot');
+        userid.setValue('ntanguturi');
         const password = $('#passwd');
+        //password.setValue('Password01')
         password.setValue('~Rishiv12012018')
-        
+
+
         let loginreport = browser.checkElement('.content');
         console.log(loginreport);
         compare(loginreport);
-
-        // const login = $('#btn_login')
-        // login.click()
-        // let homepagereport = browser.checkElement('.framemain');
-        // console.log(homepagereport);
-        // compare(homepagereport);     
-        
+  
     });
 
-    // it('verify logout', () => {
-    //     const logout = $('#mfts-logout');
-    //     logout.click();
+    it('Verify login home page', () => {
+        const login = $('#btn_login')
+        login.click()
+        let homepagereport = browser.checkElement('.framemain');
+        console.log(homepagereport);
+        compare(homepagereport); 
+    });
 
-    //     //const logouttext = $('#btn_login').getText();
-    //     //assert.equal(logouttext, 'Login');
-    //     //browser.pause(30000);       
-    // });
+
+    it('verify logout', () => {
+        const logout = $('#mfts-logout');
+        logout.click();
+
+        //const logouttext = $('#btn_login').getText();
+        //assert.equal(logouttext, 'Login');
+        //browser.pause(30000);       
+    });
 
 
 
