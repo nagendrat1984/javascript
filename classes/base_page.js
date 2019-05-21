@@ -10,12 +10,7 @@ class Page {
     }
 
 
-    waitUntilExist(locator){
-
-        browser.waitUntil(function() {
-            return $(locator).isExisting();
-         }, 15000);
-    }
+    
 
 }
 
