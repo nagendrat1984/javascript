@@ -7,7 +7,11 @@ import Page from '../classes/base_page.js';
 describe('webdriver.io page', () => {
 
     before(() => {
+        
         browser.url('/');
+        browser.pause(5000);
+        console.log(browser.getTitle());
+        
     });
    
     it('verify the title of the xplan page', () => {

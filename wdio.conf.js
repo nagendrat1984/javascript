@@ -1,5 +1,7 @@
 var path = require('path');
 var VisualRegressionCompare = require('wdio-visual-regression-service/compare');
+
+
  
 function getScreenshotName(basePath) {
   return function(context) {
@@ -14,6 +16,20 @@ function getScreenshotName(basePath) {
     return path.join(basePath, `${testName}_${type}_${browserName}_v${browserVersion}_${browserWidth}x${browserHeight}.png`);
   };
 }
+
+//let baseUrl = 'https://amptest.xplan.iress.com.au';
+let baseUrl = '';
+
+//console.log("variable name is " + process.env.C_AMPDEV)
+//Commands to use in windows - Set C_AMPTEST=Test and after thsi has been set then you can run using npx cross-env C_AMPTEST=Test wdio
+
+if (process.env.C_AMPTEST === 'Test'){baseUrl = 'https://amptest.xplan.iress.com.au'}
+
+//There is a problem with the url itself. hence its not working.
+//if (process.env.C_AMPDEV === 'Dev'){baseUrl = 'https://ampdev.xplan.iress.com.au'}
+
+
+
 
 exports.config = {
     
@@ -116,7 +132,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://amptest.xplan.iress.com.au',
+    baseUrl,
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 5000,
